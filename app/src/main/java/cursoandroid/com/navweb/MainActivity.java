@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fav = (FloatingActionButton) findViewById(R.id.fav);
+        fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -65,7 +65,21 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.prev) {
+            webView.goBack();
+            tNav.setText("");
+            return true;
+        }else if(id == R.id.next){
+            webView.goForward();
+            tNav.setText("");
+            return true;
+        }else if(id == R.id.refresh){
+            webView.reload();
+            tNav.setText("");
+            return true;
+        }else if(id == R.id.home){
+            webView.loadUrl("http://www.google.es");
+            tNav.setText("");
             return true;
         }
 
@@ -107,6 +121,16 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this,"guardado:"+res ,Toast.LENGTH_SHORT).show();
 
     }
+
+    public void guardaFavoritos(){
+        Integer idnum;
+        idnum = bd.consultaId()+1;
+        long res;
+        res = bd.insertaPag(idnum,"Página"+idnum, tNav.getText().toString(),1);
+        Toast.makeText(this,"guardado:"+res ,Toast.LENGTH_SHORT).show();
+
+    }
+
 
     public String[] creaHistorial(){return bd.consultaUrl();}
 

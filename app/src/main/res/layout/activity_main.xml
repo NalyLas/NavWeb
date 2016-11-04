@@ -16,20 +16,26 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@color/colorTool"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
+
 
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_main" />
 
+
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/btn_star"
-        app:backgroundTint="?android:attr/colorPressedHighlight" />
+        app:backgroundTint="@color/colorStar"
+        app:rippleColor="@color/colorTool" />
+
+
+
 
 </android.support.design.widget.CoordinatorLayout>
